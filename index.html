@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche de dérogation achat — Commune d'Anderlecht</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #1A3C5E;
+    --blue-mid: #2E5F8A;
+    --blue-light: #E8F0F8;
+    --blue-xlight: #F4F8FC;
+    --orange: #C25A00;
+    --orange-light: #FEF3E8;
+    --green: #1A6646;
+    --green-light: #E8F5EE;
+    --border: #DDE5EE;
+    --text: #1A1A2E;
+    --text-soft: #4A5568;
+    --grey: #666;
+    --grey-light: #F7F7F7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #EEF3F8;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+  .page { max-width: 760px; margin: 0 auto; }
+
+  /* HEADER */
+  .header {
+    background: var(--blue);
+    border-radius: 16px 16px 0 0;
+    padding: 2rem 2.5rem 1.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: 80px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+  .header-tag {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 10px;
+  }
+  .header-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 27px; color: #fff;
+    line-height: 1.25; margin-bottom: 8px;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+  }
+
+  /* RULE BANNER */
+  .rule-banner { display: flex; }
+  .rule-pill {
+    flex: 1; padding: 13px 20px;
+    font-size: 13px; line-height: 1.5;
+  }
+  .rule-pill strong {
+    display: block; font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    opacity: 0.6; margin-bottom: 3px;
+  }
+  .rp-green { background: var(--green-light); color: var(--green); border-bottom: 1px solid #C3E8D2; }
+  .rp-orange { background: var(--orange-light); color: var(--orange); border-bottom: 1px solid #F5D9B8; }
+
+  /* BODY */
+  .body {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    overflow: hidden;
+  }
+
+  .section-label {
+    padding: 13px 24px 9px;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--grey);
+    background: var(--grey-light);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* QUESTION */
+  .q {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 24px;
+    transition: background 0.15s;
+  }
+  .q.state-oui { background: #FEFAF4; }
+  .q.state-non { background: #F5FBF7; }
+
+  .q-top {
+    display: flex; gap: 14px;
+    align-items: flex-start; margin-bottom: 10px;
+  }
+  .q-num {
+    width: 28px; height: 28px; min-width: 28px;
+    border-radius: 50%;
+    background: var(--blue-light); color: var(--blue);
+    font-size: 13px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .q-label {
+    font-size: 15px; font-weight: 500;
+    color: var(--text); line-height: 1.5;
+  }
+
+  .q-detail {
+    margin: 0 0 14px 42px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .q-implique {
+    font-size: 12.5px; color: var(--text-soft);
+    line-height: 1.7; padding: 10px 12px;
+    background: var(--blue-xlight);
+    border-left: 3px solid var(--blue-mid);
+    border-radius: 0 6px 6px 0;
+  }
+  .q-implique strong { font-weight: 600; color: var(--blue); }
+  .q-warn {
+    font-size: 12px; color: var(--orange);
+    background: var(--orange-light);
+    border-left: 3px solid var(--orange);
+    border-radius: 0 6px 6px 0;
+    padding: 8px 12px; line-height: 1.55;
+  }
+  .q-warn::before { content: "⚠ "; }
+
+  .q-btns { display: flex; gap: 8px; margin-left: 42px; }
+  .btn-choice {
+    padding: 7px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    background: #fff; color: var(--text-soft);
+    cursor: pointer; transition: all 0.12s;
+  }
+  .btn-choice:hover { background: var(--grey-light); }
+  .btn-choice.active-oui {
+    background: var(--orange-light);
+    border-color: var(--orange);
+    color: var(--orange); font-weight: 600;
+  }
+  .btn-choice.active-non {
+    background: var(--green-light);
+    border-color: var(--green);
+    color: var(--green); font-weight: 600;
+  }
+
+  /* GOV */
+  .gov-wrap { padding: 4px 24px 20px; }
+  .gov-box {
+    background: var(--blue-xlight);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .gov-title {
+    font-size: 11px; font-weight: 600;
+    color: var(--blue); text-transform: uppercase;
+    letter-spacing: 0.07em; margin-bottom: 10px;
+  }
+  .gov-steps { display: flex; flex-direction: column; gap: 8px; }
+  .gov-step {
+    display: flex; gap: 10px;
+    align-items: flex-start;
+    font-size: 13px; color: var(--text-soft); line-height: 1.55;
+  }
+  .gov-step-num {
+    width: 20px; height: 20px; min-width: 20px;
+    border-radius: 50%; background: var(--blue); color: #fff;
+    font-size: 11px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px; flex-shrink: 0;
+  }
+
+  /* RESULT */
+  .result-zone {
+    border-top: 1px solid var(--border);
+    padding: 20px 24px;
+    background: var(--grey-light);
+  }
+  .progress-row {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 14px;
+  }
+  .prog-track {
+    flex: 1; height: 4px;
+    background: var(--border); border-radius: 2px; overflow: hidden;
+  }
+  .prog-fill {
+    height: 100%; width: 0%;
+    background: var(--blue-mid); border-radius: 2px;
+    transition: width 0.3s, background 0.3s;
+  }
+  .prog-label {
+    font-size: 12px; color: var(--grey);
+    white-space: nowrap; font-weight: 500;
+  }
+
+  .verdict {
+    display: none; border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14px; font-weight: 500; line-height: 1.5;
+  }
+  .v-centrale { background: var(--green-light); color: var(--green); }
+  .v-deroge { background: var(--orange-light); color: var(--orange); }
+  .v-detail {
+    font-size: 12.5px; font-weight: 400;
+    margin-top: 6px; opacity: 0.85; line-height: 1.6;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .chip {
+    font-size: 11px; padding: 3px 9px; border-radius: 20px;
+    background: rgba(194,90,0,0.10); color: var(--orange);
+    border: 1px solid rgba(194,90,0,0.22); font-weight: 500;
+  }
+  .v-next {
+    margin-top: 10px; font-size: 12.5px;
+    padding: 9px 12px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 6px; color: var(--orange);
+    font-weight: 500; line-height: 1.55;
+  }
+
+  .reset-btn {
+    display: block; margin-top: 12px;
+    font-size: 12px; color: var(--grey);
+    background: none; border: none;
+    cursor: pointer; text-decoration: underline;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 18px;
+    font-size: 12px; color: #aaa;
+  }
+
+  @media (max-width: 520px) {
+    .header { padding: 1.5rem; }
+    .header-title { font-size: 21px; }
+    .rule-banner { flex-direction: column; }
+    .q { padding: 16px; }
+    .q-detail, .q-btns { margin-left: 0; margin-top: 10px; }
+    .gov-wrap { padding: 4px 16px 16px; }
+    .result-zone { padding: 16px; }
+    .section-label { padding: 11px 16px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-tag">Commune d'Anderlecht · Service Compliance</div>
+    <div class="header-title">Fiche de dérogation à la centralisation des achats</div>
+    <div class="header-sub">Applicable aux achats entre 3 000 € et 30 000 € · À remplir avant tout engagement de dépense</div>
+  </div>
+
+  <div class="rule-banner">
+    <div class="rule-pill rp-green">
+      <strong>Règle générale</strong>
+      Tout achat &gt; 3 000 € est traité par la centrale d'achat.
+    </div>
+    <div class="rule-pill rp-orange">
+      <strong>Dérogation possible</strong>
+      Si ≥ 1 critère activé + accord tacite centrale sous 72h ouvrées.
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="section-label">4 critères de fond — répondez par Oui ou Non</div>
+
+    <!-- Q1 -->
+    <div class="q" id="q1">
+      <div class="q-top">
+        <span class="q-num">1</span>
+        <span class="q-label">Le délai de traitement par la centrale est-il objectivement incompatible avec le besoin opérationnel ?</span>
+      </div>
+      <div class="q-detail">
+        <div class="q-implique">Le besoin résulte d'un événement externe et non prévisible — panne bloquante, sinistre, entrée d'urgence d'un usager. Vous devez pouvoir documenter : <strong>délai opérationnel maximal = X jours</strong> / <strong>délai moyen centrale = Y jours</strong>, avec Y &gt; X. En cas d'urgence extrême, contactez directement la centrale avant de remplir cette fiche.</div>
+        <div class="q-warn">Un manque d'anticipation du service ou une habitude de travailler dans l'urgence ne constituent pas ce critère.</div>
+      </div>
+      <div class="q-btns">
+        <button class="btn-choice" onclick="sel(1,'oui')">Oui</button>
+        <button class="btn-choice" onclick="sel(1,'non')">Non</button>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q" id="q2">
+      <div class="q-top">
+        <span class="q-num">2</span>
+        <span class="q-label">Ce marché a-t-il déjà posé problème lorsqu'il était géré par la centrale, ou sa complexité technique est-elle telle que seul le service peut rédiger correctement le cahier des charges ?</span>
+      </div>
+      <div class="q-detail">
+        <div class="q-implique">
+          Deux situations distinctes sont visées.<br><br>
+          <strong>Incident documenté :</strong> il existe une trace formelle d'un problème passé sur ce type de marché géré par la centrale — réclamation écrite, retard de livraison significatif, non-conformité constatée à réception, litige avec un fournisseur du panel. L'incident doit être archivé ou pouvoir être référencé.<br><br>
+          <strong>Complexité technique irréductible :</strong> les spécifications sont si pointues que leur rédaction par la centrale sans l'expertise du service dégraderait nécessairement la qualité du cahier des charges. Le service doit pouvoir justifier par écrit en quoi cette expertise est indispensable et non transmissible.
+        </div>
+        <div class="q-warn">Une insatisfaction générale non documentée ou une préférence du service pour garder la main ne constituent pas ce critère.</div>
+      </div>
+      <div class="q-btns">
+        <button class="btn-choice" onclick="sel(2,'oui')">Oui</button>
+        <button class="btn-choice" onclick="sel(2,'non')">Non</button>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q" id="q3">
+      <div class="q-top">
+        <span class="q-num">3</span>
+        <span class="q-label">Le service est-il certain que le montant est inférieur à 30 000 € ET que cet achat est impossible à mutualiser avec d'autres services ?</span>
+      </div>
+      <div class="q-detail">
+        <div class="q-implique">
+          Ces deux conditions sont cumulatives. <strong>Sur le montant :</strong> l'estimation TTC doit être inférieure à 30 000 €, seuil en dessous duquel une procédure simplifiée reste applicable sans risque procédural majeur. <strong>Sur la mutualisation :</strong> l'achat est ponctuel, non récurrent, et sa nature ou son calendrier rendent tout regroupement avec d'autres services objectivement impossible — non simplement peu pratique.
+        </div>
+        <div class="q-warn">Si le moindre doute existe sur le montant final ou sur la possibilité de mutualiser, ce critère ne peut pas être activé. En cas d'incertitude, transmettez à la centrale.</div>
+      </div>
+      <div class="q-btns">
+        <button class="btn-choice" onclick="sel(3,'oui')">Oui</button>
+        <button class="btn-choice" onclick="sel(3,'non')">Non</button>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="q" id="q4" style="border-bottom:none;">
+      <div class="q-top">
+        <span class="q-num">4</span>
+        <span class="q-label">L'achat nécessite-t-il des ajustements fréquents en cours d'exécution que seul le service de terrain peut piloter ?</span>
+      </div>
+      <div class="q-detail">
+        <div class="q-implique">Le besoin évolue pendant l'exécution et exige une relation directe et réactive avec le prestataire que la centrale ne peut pas assurer à distance. Exemples concrets : accompagnement individuel d'un usager dont les besoins évoluent, intervention technique sur un équipement dont les spécifications se précisent à l'usage, prestation dont le périmètre s'affine au fur et à mesure.</div>
+        <div class="q-warn">Vouloir rester maître de la relation fournisseur par confort ou par habitude ne constitue pas ce critère.</div>
+      </div>
+      <div class="q-btns">
+        <button class="btn-choice" onclick="sel(4,'oui')">Oui</button>
+        <button class="btn-choice" onclick="sel(4,'non')">Non</button>
+      </div>
+    </div>
+
+    <div class="section-label">Gouvernance — si dérogation activée</div>
+
+    <div class="gov-wrap">
+      <div style="height:16px;"></div>
+      <div class="gov-box">
+        <div class="gov-title">Procédure obligatoire avant tout engagement</div>
+        <div class="gov-steps">
+          <div class="gov-step">
+            <span class="gov-step-num">1</span>
+            <span>Le service transmet la présente fiche complétée accompagnée d'une <strong>brève note explicative</strong> décrivant la situation concrète et le critère activé.</span>
+          </div>
+          <div class="gov-step">
+            <span class="gov-step-num">2</span>
+            <span>La fiche et la note sont <strong>transmises à la centrale d'achat</strong> pour information, avant tout engagement.</span>
+          </div>
+          <div class="gov-step">
+            <span class="gov-step-num">3</span>
+            <span>La centrale dispose de <strong>72h ouvrées</strong> pour s'opposer par écrit avec justification. Sans réponse dans ce délai, la dérogation est réputée acceptée.</span>
+          </div>
+          <div class="gov-step">
+            <span class="gov-step-num">4</span>
+            <span>Intégrer la présente <strong>fiche-dérogation dans le dossier BOS</strong> correspondant à l'achat.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-zone">
+      <div class="progress-row">
+        <div class="prog-track"><div class="prog-fill" id="pf"></div></div>
+        <span class="prog-label" id="pl">0 / 4</span>
+      </div>
+
+      <div class="verdict v-centrale" id="vc">
+        ✓ Centralisation — Transmettez le besoin à la centrale d'achat.
+        <div class="v-detail" id="dc">Aucun critère d'exception n'est objectivement réuni. La centrale est le circuit le plus efficace et le plus sécurisé pour cet achat.</div>
+      </div>
+
+      <div class="verdict v-deroge" id="vd">
+        ◎ Dérogation possible — Suivez la procédure de gouvernance ci-dessus.
+        <div class="v-detail" id="dd"></div>
+        <div class="chips" id="chips"></div>
+        <div class="v-next">→ Étape suivante : rédiger une brève note explicative décrivant la situation, joindre la présente fiche, et transmettre l'ensemble à la centrale pour accord tacite sous 72h ouvrées.</div>
+      </div>
+
+      <button class="reset-btn" onclick="reset()">Réinitialiser</button>
+    </div>
+
+  </div>
+
+  <div class="footer">Commune d'Anderlecht · Service Compliance · Système de dérogation achat</div>
+</div>
+
+<script>
+const A = {};
+const labels = {
+  1: 'Urgence objective',
+  2: 'Incident documenté ou complexité technique',
+  3: 'Montant < 30 000 € et non mutualisable',
+  4: 'Besoin évolutif en cours d\'exécution'
+};
+
+function sel(q, v) {
+  A[q] = v;
+  const card = document.getElementById('q' + q);
+  card.classList.remove('state-oui', 'state-non');
+  document.querySelectorAll('#q' + q + ' .btn-choice').forEach(b => b.classList.remove('active-oui', 'active-non'));
+  const btns = document.querySelectorAll('#q' + q + ' .btn-choice');
+  if (v === 'oui') { card.classList.add('state-oui'); btns[0].classList.add('active-oui'); }
+  else { card.classList.add('state-non'); btns[1].classList.add('active-non'); }
+  compute();
+}
+
+function compute() {
+  const n = Object.keys(A).length;
+  const pf = document.getElementById('pf');
+  pf.style.width = Math.round(n / 4 * 100) + '%';
+  document.getElementById('pl').textContent = n + ' / 4';
+  ['vc', 'vd'].forEach(id => document.getElementById(id).style.display = 'none');
+  if (n < 4) { pf.style.background = '#9AB4D0'; return; }
+
+  const actifs = [1, 2, 3, 4].filter(q => A[q] === 'oui');
+  if (actifs.length === 0) {
+    pf.style.background = '#1A6646';
+    document.getElementById('vc').style.display = 'block';
+  } else {
+    pf.style.background = '#C25A00';
+    document.getElementById('vd').style.display = 'block';
+    document.getElementById('dd').textContent = 'Critère(s) activé(s) : ' + actifs.map(q => labels[q]).join(', ') + '.';
+    document.getElementById('chips').innerHTML = actifs.map(q => '<span class="chip">' + labels[q] + '</span>').join('');
+  }
+}
+
+function reset() {
+  for (let k in A) delete A[k];
+  for (let q = 1; q <= 4; q++) {
+    document.getElementById('q' + q).classList.remove('state-oui', 'state-non');
+    document.querySelectorAll('#q' + q + ' .btn-choice').forEach(b => b.classList.remove('active-oui', 'active-non'));
+  }
+  document.getElementById('pf').style.width = '0%';
+  document.getElementById('pf').style.background = '#9AB4D0';
+  document.getElementById('pl').textContent = '0 / 4';
+  ['vc', 'vd'].forEach(id => document.getElementById(id).style.display = 'none');
+}
+</script>
+</body>
+</html>
